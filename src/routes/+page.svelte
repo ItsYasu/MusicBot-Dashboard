@@ -34,21 +34,31 @@
 	// }
 
 	async function playLastTrack() {
-		// await fetch('http://16.171.140.144:7000/bot/instantplay', {
-		// 	method: 'POST',
-		// 	headers: {
-		// 		'Content-Type': 'application/json'
-		// 	},
-		// 	body: JSON.stringify(pastTrack)
-		// });
+		try {
+			const response = await fetch('/bot/instantplay', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(pastTrack)
+			});
 
-		await fetch('/api/instantplay', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify(pastTrack)
-		});
+			const data = await response.json();
+
+			if (!response.ok) {
+				console.error('Response not OK:', data);
+				// Optionally, you can throw an error here to be caught in the catch block
+				// throw new Error('Server responded with status: ' + response.status);
+			} else {
+				console.log('Successful request:', data);
+			}
+
+			return new Response(JSON.stringify(data), {
+				headers: { 'Content-Type': 'application/json' }
+			});
+		} catch (error) {
+			console.error('Error occurred:', error);
+		}
 	}
 
 	async function fetchQueue() {
@@ -108,12 +118,20 @@
 		});
 		botStatus = botStatus === 'PAUSED' ? 'PLAYING' : 'PAUSED';
 	}
+	async function playNextTrack() {
+		const response = await fetch('/bot/nextsong', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		});
+	}
 </script>
 
 <div class="mt-10">
 	<center>
 		{#if statusLoaded}
-			<p>Bot is currently: {botStatus}</p>
+			<p>Music is currently: {botStatus}</p>
 		{/if}
 
 		<div class="mt-10 mb-10">
@@ -128,19 +146,42 @@
 		<!-- there also is ML and MR, or if you want margins on all side u can use simply like m-10 -->
 		<!-- or if you want margins only vertically you can do my-10 and horizontally mx-10 -->
 
-		<button
-			class="btn variant-ringed-primary mx-auto"
-			on:click={async () => {
-				playPauseBot();
-			}}
-		>
-			{#if botStatus === 'PAUSED'}
-				Play
-			{:else}
-				Pause
-			{/if}
-		</button></center
-	>
+		<div style="display: flex; align-items: center; justify-content: center;">
+			<!-- Left button -->
+			<button
+				class="btn variant-ringed-primary ml-2"
+				on:click={async () => {
+					playLastTrack();
+				}}
+			>
+				Previous Track
+			</button>
+
+			<!-- Play/Pause button -->
+			<button
+				class="btn variant-ringed-primary ml-2 mr-2"
+				on:click={async () => {
+					playPauseBot();
+				}}
+			>
+				{#if botStatus === 'PAUSED'}
+					Play
+				{:else}
+					Pause
+				{/if}
+			</button>
+
+			<!-- Right button -->
+			<button
+				class="btn variant-ringed-primary mr-2"
+				on:click={async () => {
+					playNextTrack();
+				}}
+			>
+				Next Track
+			</button>
+		</div>
+	</center>
 </div>
 <div class="mt-10">
 	<!-- <center>
