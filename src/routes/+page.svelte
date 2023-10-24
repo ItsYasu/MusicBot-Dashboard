@@ -119,7 +119,7 @@
 		<div class="mt-10 mb-10">
 			<img
 				class="h-64"
-				src="https://wallpaperswide.com/download/lets_make_music-wallpaper-2560x720.jpg"
+				src="https://cdn.discordapp.com/attachments/1025037731253997659/1166285259135008798/pngtree-color-glare-music-banner-background-image_209655.jpg?ex=6549eeca&is=653779ca&hm=dedd9d1d8200fd167cf74d5ec267d490c909656ae5aa9fbc84cc13b21f120d43&"
 				alt="MUSIC"
 			/>
 		</div>

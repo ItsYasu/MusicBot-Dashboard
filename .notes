@@ -1,3 +1,4 @@
+npm create svelte@latest <name_project>
 Run command to setup skeleton project:
 npm create skeleton-app@latest music-dash
 
