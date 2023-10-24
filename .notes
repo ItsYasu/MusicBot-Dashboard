@@ -1,0 +1,38 @@
+Run command to setup skeleton project:
+npm create skeleton-app@latest music-dash
+
+Problems? Open an issue on https://github.com/skeletonlabs/skeleton/issues if none exists already.
+│
+◇  Which Skeleton app template?
+│  Bare Bones
+│
+◇  Select a theme (top most selection will be default):
+│  Skeleton
+│
+◇
+What other packages would you like to install:
+│  none
+│
+◇  Add type checking with TypeScript?
+│  Yes, using TypeScript syntax
+│
+◇  What would you like setup in your project:
+│  Add ESLint for code linting?, Add Prettier for code formatting?
+│
+◇  Done installing
+
+
+cd music-dash
+npm install
+
+
+
+npm run dev - start project on local network,
+npm build -- build project for production (won't be using much bcz Vercel)
+
+
+
+
+https://kit.svelte.dev/docs/routing - routing explanation
+https://www.skeleton.dev/elements/buttons
+
