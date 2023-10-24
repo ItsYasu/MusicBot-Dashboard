@@ -34,31 +34,26 @@
 	// }
 
 	async function playLastTrack() {
-		try {
-			const response = await fetch('/bot/instantplay', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify(pastTrack)
-			});
-
-			const data = await response.json();
-
-			if (!response.ok) {
-				console.error('Response not OK:', data);
-				// Optionally, you can throw an error here to be caught in the catch block
-				// throw new Error('Server responded with status: ' + response.status);
-			} else {
-				console.log('Successful request:', data);
+		const response = await fetch('/bot/instantplay', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
 			}
+		});
 
-			return new Response(JSON.stringify(data), {
-				headers: { 'Content-Type': 'application/json' }
-			});
-		} catch (error) {
-			console.error('Error occurred:', error);
+		const data = await response.json();
+
+		if (!response.ok) {
+			console.error('Response not OK:', data);
+			// Optionally, you can throw an error here to be caught in the catch block
+			// throw new Error('Server responded with status: ' + response.status);
+		} else {
+			console.log('Successful request:', data);
 		}
+
+		return new Response(JSON.stringify(data), {
+			headers: { 'Content-Type': 'application/json' }
+		});
 	}
 
 	async function fetchQueue() {
@@ -183,6 +178,7 @@
 		</div>
 	</center>
 </div>
+
 <div class="mt-10">
 	<!-- <center>
 		<h1 class="text-3xl">Music Queue</h1>
