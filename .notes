@@ -1,3 +1,5 @@
+RUN A SVELTEKIT SKELETONED PROJECT
+
 npm create svelte@latest <name_project>
 Run command to setup skeleton project:
 npm create skeleton-app@latest music-dash
@@ -37,3 +39,23 @@ npm build -- build project for production (won't be using much bcz Vercel)
 https://kit.svelte.dev/docs/routing - routing explanation
 https://www.skeleton.dev/elements/buttons
 
+-------------------------------------------------------------------
+GENERAL INFO
+
+Package.json contains dependendencies and svelte config
+prettierignore contains files to ignore by the formatter.
+
+-- ROUTING -- URL Paths that users can access in the browser are defined by files and folders in your codebase
+Each folder on routes is a route for the domain.  (in this case for ex: /api/instanplay)
+
+Nested Routing 
+Folder inside folder --> for example if we make another foldr inside instantplay folder it would be /api/instantplay/foldername
+We have to create +page.svelte file to add the logic of that route
+
+Dynamic Routing (needed for example for a product/id)
+We have to make a folder with an specific name [foldername] in our case [productId] or [Id]
+https://www.youtube.com/watch?v=2ZvSj5kktjA&list=PLC3y8-rFHvwjifDNQYYWI6i06D7PjF0Ua&index=6&pp=iAQB
+
+Nested Dynamic Routes: https://www.youtube.com/watch?v=Vo4ZML4JOUI&list=PLC3y8-rFHvwjifDNQYYWI6i06D7PjF0Ua&index=7
+
+Catching all routes: https://www.youtube.com/watch?v=hREagSs5UI0&list=PLC3y8-rFHvwjifDNQYYWI6i06D7PjF0Ua&index=8
