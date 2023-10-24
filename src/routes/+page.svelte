@@ -113,7 +113,7 @@
 <div class="mt-10">
 	<center>
 		{#if statusLoaded}
-			<p>Bot is currently: {botStatus}</p>
+			<p>Music is currently: {botStatus}</p>
 		{/if}
 
 		<div class="mt-10 mb-10">
@@ -128,20 +128,44 @@
 		<!-- there also is ML and MR, or if you want margins on all side u can use simply like m-10 -->
 		<!-- or if you want margins only vertically you can do my-10 and horizontally mx-10 -->
 
-		<button
-			class="btn variant-ringed-primary mx-auto"
-			on:click={async () => {
-				playPauseBot();
-			}}
-		>
-			{#if botStatus === 'PAUSED'}
-				Play
-			{:else}
-				Pause
-			{/if}
-		</button></center
-	>
+		<div style="display: flex; align-items: center; justify-content: center;">
+			<!-- Left button -->
+			<button
+				class="btn variant-ringed-primary ml-2"
+				on:click={async () => {
+					playLastTrack();
+				}}
+			>
+				Previous Track
+			</button>
+
+			<!-- Play/Pause button -->
+			<button
+				class="btn variant-ringed-primary ml-2 mr-2"
+				on:click={async () => {
+					playPauseBot();
+				}}
+			>
+				{#if botStatus === 'PAUSED'}
+					Play
+				{:else}
+					Pause
+				{/if}
+			</button>
+
+			<!-- Right button -->
+			<button
+				class="btn variant-ringed-primary mr-2"
+				on:click={async () => {
+					playNextTrack();
+				}}
+			>
+				Next Track
+			</button>
+		</div>
+	</center>
 </div>
+
 <div class="mt-10">
 	<!-- <center>
 		<h1 class="text-3xl">Music Queue</h1>
