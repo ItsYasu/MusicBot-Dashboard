@@ -117,7 +117,11 @@
 		{/if}
 
 		<div class="mt-10 mb-10">
-			<img class="h-64" src="https://wallpapercave.com/wp/wp9705077.jpg" alt="MUSIC" />
+			<img
+				class="h-64"
+				src="https://png.pngtree.com/thumb_back/fh260/back_our/20190622/ourmid/pngtree-color-glare-music-banner-background-image_209655.jpg"
+				alt="MUSIC"
+			/>
 		</div>
 		<!-- MT - margin (space) from the top -->
 		<!-- mb - margin (space) from the bottom -->
