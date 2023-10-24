@@ -10,4 +10,4 @@ export const GET: RequestHandler = async () => {
             'content-type': 'text/plain'
         }
     });
-};
+};  
