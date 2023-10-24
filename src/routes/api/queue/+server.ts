@@ -10,3 +10,7 @@ export const GET: RequestHandler = async () => {
         }
     });
 };
+const requet = 1
+// so it's like a 3 way communication. frontend ---> backend ---> bot ---> backend ---> frontend
+// because we cannot do frontend ---> bot directly because we can't call HTTP requests from HTTPS requests
+// and the server doesn't care if we are sending requests to HTTP because it's badass
