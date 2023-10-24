@@ -119,7 +119,7 @@
 		<div class="mt-10 mb-10">
 			<img
 				class="h-64"
-				src="https://png.pngtree.com/thumb_back/fh260/back_our/20190622/ourmid/pngtree-color-glare-music-banner-background-image_209655.jpg"
+				src="https://wallpaperswide.com/download/lets_make_music-wallpaper-2560x720.jpg"
 				alt="MUSIC"
 			/>
 		</div>
