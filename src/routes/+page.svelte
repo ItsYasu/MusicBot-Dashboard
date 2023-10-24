@@ -108,6 +108,14 @@
 		});
 		botStatus = botStatus === 'PAUSED' ? 'PLAYING' : 'PAUSED';
 	}
+	async function playNextTrack() {
+		const response = await fetch('/api/nextsong', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		});
+	}
 </script>
 
 <div class="mt-10">
