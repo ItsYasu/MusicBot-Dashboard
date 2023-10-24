@@ -34,7 +34,15 @@
 	// }
 
 	async function playLastTrack() {
-		await fetch('http://16.171.140.144:7000/bot/instantplay', {
+		// await fetch('http://16.171.140.144:7000/bot/instantplay', {
+		// 	method: 'POST',
+		// 	headers: {
+		// 		'Content-Type': 'application/json'
+		// 	},
+		// 	body: JSON.stringify(pastTrack)
+		// });
+
+		await fetch('/api/instantplay', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
@@ -44,7 +52,9 @@
 	}
 
 	async function fetchQueue() {
-		const request = await fetch('http://16.171.140.144:7000/bot/queue');
+		// const request = await fetch('http://16.171.140.144:7000/bot/queue');
+		// const response = await request.json();
+		const request = await fetch('/api/queue');
 		const response = await request.json();
 
 		//musicQueue = response;
@@ -72,7 +82,9 @@
 
 		// if you have some chart you need to create or whatever, then here
 		// wee need this, cause when the client loads the page fully, we will fetch the current bot status
-		const request = await fetch('http://16.171.140.144:7000/bot/status'); // this returns a GET
+		// const request = await fetch('http://16.171.140.144:7000/bot/status'); // this returns a GET
+		// const response = await request.text();
+		const request = await fetch('/api/status'); // this returns a GET
 		const response = await request.text();
 
 		await fetchQueue();
@@ -86,7 +98,12 @@
 	});
 
 	async function playPauseBot() {
-		await fetch('http://16.171.140.144:7000/bot/playpause', {
+		// await fetch('http://16.171.140.144:7000/bot/playpause', {
+		// 	method: 'POST'
+		// });
+		// botStatus = botStatus === 'PAUSED' ? 'PLAYING' : 'PAUSED';
+
+		await fetch('/api/playpause', {
 			method: 'POST'
 		});
 		botStatus = botStatus === 'PAUSED' ? 'PLAYING' : 'PAUSED';
