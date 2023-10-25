@@ -10,11 +10,9 @@
 		author: string;
 		uri: string;
 		position: number;
-		pastTrack: boolean;
 	}
 
 	let musicQueue: song = [];
-	let pastTrack: song = null;
 
 	// LET is a variable that can be changed
 	// CONST is a variable that cannot be changed
@@ -42,12 +40,11 @@
 		// 	body: JSON.stringify(pastTrack)
 		// });
 
-		await fetch('/api/instantplay', {
+		await fetch('/api/prevtrack', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify(pastTrack)
 		});
 	}
 
@@ -73,8 +70,6 @@
 		}
 
 		musicQueue = response;
-
-		console.log(pastTrack);
 	}
 
 	onMount(async () => {
@@ -115,6 +110,27 @@
 				'Content-Type': 'application/json'
 			}
 		});
+	}
+
+
+	async function deleteTrackFromQueue(position: number) {
+		// call the API to delete the track from the queue at given position
+
+		console.log(`Deleting track at position ${position}`);
+
+		const request = await fetch('/api/queue', {
+			method: 'DELETE',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({ position })
+		});
+
+		const response = request.status;
+
+		if(response == 200) {
+			await fetchQueue();
+		}
 	}
 </script>
 
@@ -213,7 +229,7 @@
 						<tr>
 							<th>Position</th>
 							<th>Title</th>
-							<th>URL</th>
+							<th>Actions</th>
 							<!-- <th>Past Track</th> -->
 						</tr>
 					</thead>
@@ -222,8 +238,17 @@
 							<tr>
 								<td>{song.position}</td>
 								<td>{song.title} by {song.author}</td>
-								<td>{song.uri}</td>
+								<!---<td>{song.uri}</td>-->
 								<!-- <td>{song.pastTrack ? 'YES' : 'NO'}</td> -->
+								<td>
+									<button class="btn btn-sm variant-ringed-error"
+									on:click={async() => {
+										await deleteTrackFromQueue(song.position);
+									}}
+									>
+										Delete from Queue
+									</button>
+								</td>
 							</tr>
 						{/each}
 					</tbody>

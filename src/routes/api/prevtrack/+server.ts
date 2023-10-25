@@ -8,7 +8,7 @@ export const POST: RequestHandler = async ({locals}) => {
         throw redirect(307, '/login');
     }
 
-    await fetch(`http://${bot_ip}/bot/instantplay`, {
+    await fetch(`http://${bot_ip}/bot/prevtrack`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
