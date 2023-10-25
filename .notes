@@ -59,3 +59,11 @@ https://www.youtube.com/watch?v=2ZvSj5kktjA&list=PLC3y8-rFHvwjifDNQYYWI6i06D7PjF
 Nested Dynamic Routes: https://www.youtube.com/watch?v=Vo4ZML4JOUI&list=PLC3y8-rFHvwjifDNQYYWI6i06D7PjF0Ua&index=7
 
 Catching all routes: https://www.youtube.com/watch?v=hREagSs5UI0&list=PLC3y8-rFHvwjifDNQYYWI6i06D7PjF0Ua&index=8
+
+DATABASE CREATION W PRISMA
+
+npm install prisma --save-dev
+npx prisma init --datasource-provider [database=mysql/sqlite/postgresql/mongodb/etc]
+
+PRIMSA COMMANDS
+npx prisma db push - push to db, it will remove all things that are in db but were removed from schema.prisma [!]

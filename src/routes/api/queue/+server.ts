@@ -1,7 +1,14 @@
 import type { RequestHandler } from './$types';
+import { bot_ip } from '$lib/constants';
+import { redirect } from '@sveltejs/kit';
 
-export const GET: RequestHandler = async () => {
-    const request = await fetch('http://16.171.140.144:7000/bot/queue');
+export const GET: RequestHandler = async ({locals}) => {
+    const session = await locals.auth.validate();
+    if (!session) {
+        throw redirect(307, '/login');
+    }
+
+    const request = await fetch(`http://${bot_ip}/bot/queue`);
     const response = await request.json();
     return new Response(JSON.stringify(response), {
         status: 200,
@@ -10,7 +17,7 @@ export const GET: RequestHandler = async () => {
         }
     });
 };
-const requet = 1
+
 // so it's like a 3 way communication. frontend ---> backend ---> bot ---> backend ---> frontend
 // because we cannot do frontend ---> bot directly because we can't call HTTP requests from HTTPS requests
 // and the server doesn't care if we are sending requests to HTTP because it's badass
