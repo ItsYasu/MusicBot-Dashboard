@@ -1,7 +1,6 @@
 import type { RequestHandler } from './$types';
 import { auth } from '$lib/lucia';
 import { auth_token } from '$lib/constants';
-import { SomeDatabaseError, LuciaError } from 'lucia';
 import { fail } from '@sveltejs/kit';
 
 export const PUT: RequestHandler = async ({ request }) => {
@@ -41,7 +40,6 @@ export const PUT: RequestHandler = async ({ request }) => {
             userId: user.userId,
             attributes: {}
         });
-        locals.auth.setSession(session); // set session cookie
     } catch (e) {
         console.log(e);
         // this part depends on the database you're using

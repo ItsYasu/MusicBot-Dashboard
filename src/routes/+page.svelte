@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { bot_ip } from '$lib/constants';
 	import { onMount } from 'svelte';
 
 	// onMount is the first client side thing that gets called when the page is loaded FULLY
@@ -64,11 +65,6 @@
 			return;
 		}
 
-		// we will check if the first position of the queue (song title) is the same as the new, and if it is, then we will add the old one to the past tracks
-		if (oldQueue[0].title !== response[0].title) {
-			pastTrack = oldQueue[0];
-		}
-
 		musicQueue = response;
 	}
 
@@ -89,7 +85,7 @@
 
 		setInterval(async () => {
 			await fetchQueue();
-		}, 5555);
+		}, 2500);
 	});
 
 	async function playPauseBot() {
