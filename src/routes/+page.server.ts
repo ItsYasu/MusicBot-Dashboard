@@ -1,11 +1,11 @@
-import { redirect } from '@sveltejs/kit';
-import type { PageServerLoad } from './$types';
+//import { redirect } from '@sveltejs/kit';
+//import type { PageServerLoad } from './$types';
 
-export const load = (async ({ locals }) => {
-    const session = await locals.auth.validate();
-    if (!session) {
-        throw redirect(307, '/login');
-    }
+//export const load = (async ({ locals }) => {
+//    const session = await locals.auth.validate();
+    // if (!session) {
+    //     throw redirect(307, '/login');
+    // }
 
-    return {};
-}) satisfies PageServerLoad;
+    // return {};
+//}) satisfies PageServerLoad;
